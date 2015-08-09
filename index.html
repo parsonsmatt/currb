@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/solarized_dark.css">
@@ -57,6 +57,9 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             <li class="fragment">
               Popularized by, and named after, American mathematician Haskell Curry
             </li>
+            <li class="fragment">
+              (Yes, that's where the name comes from)
+            </li>
           </ul>
         </section>
         <section>
@@ -71,22 +74,74 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             "Nothing in math is named after the person that discovered it"
           </blockquote>
           <p class="fragment">
-            (discovered by Hubert Kennedy)
+          (discovered by Hubert Kennedy)
           </li>
         </section>
         <section data-background="green-curry.jpg">
         </section>
         <!-- example -->
+        <section data-background="how-i-did-it.png">
+        </section>
         <section>
-          really cool!
-          <pre><code class="ruby">
-def hello
-  Lol.new
+          <p>First, you need a function</p>
+          <pre><code class="ruby">add = lambda do |x, y|
+  x + y
 end
-          </code></pre>
-           
+
+add.call(5, 6)</code></pre>
+          <p>More tersely,</p>
+          <pre><code class="ruby">add = -> x, y { x + y }
+add[5, 6]</code></pre> 
         </section>
 
+        <section>
+          <p>
+          Now, instead of returning the value, wrap the value in a lambda.
+          </p>
+          <pre><code class="ruby">add = lambda do |x, y|
+  lambda do 
+    x + y
+  end
+end
+
+add.call(5, 6).call</code></pre>
+        </section>
+
+        <section data-background="yodawg.jpg"></section>
+
+        <section>
+          <p>
+          Now, just move the argument from the outer lambda to the inner lambda!
+          </p>
+          <pre><code class="ruby">add = lambda do |x|
+  lambda do |y|
+    x + y
+  end
+end
+
+add.call(5).call(6)</code></pre>
+        </section>
+        <section>
+          <h1>Congrats!!</h1>
+          <p>Y'all are curry masters!</p>
+        </section>
+        <section data-background="y-tho.jpg">
+          <aside class="notes">
+            explanations usually end here
+            why do we care?
+            what use could this have?
+            not well explained usually
+          </aside>
+        </section>
+
+        <!-- application in function composition -->
+
+        <section>
+          <h2>What is a use for Currying?</h2>
+          <h2 class="fragment">Function composition!</h2>
+        </section>
+
+        <section data-background="beethoven2.jpg"></section>
         <!-- about me -->
         <section>
           <h2>I'm Matt Parsons<span class="fragment">?</span></h2>
@@ -106,9 +161,9 @@ end
             Thanks! :D
           </h1>
           <h3>questions?</h3>
-          
+
         </section>
-        
+
         <!-- asdfasdf -->
       </div>
     </div>
@@ -133,8 +188,9 @@ Reveal.initialize({
   { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
   { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
   { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/math/math.js', async: true },
     { src: 'plugin/highlight/highlight.js', callback: function() { hljs.initHighlightingOnLoad(); } },
-    { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
       { src: 'plugin/notes/notes.js', async: true }
   ]
 });
