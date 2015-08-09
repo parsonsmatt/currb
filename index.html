@@ -29,6 +29,11 @@ link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' 
 document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
+    <style>
+.bg-hl {
+  background: RGBa(0, 0, 0, 0.8);
+}
+    </style>
     <!--[if lt IE 9]>
       <script src="lib/js/html5shiv.js"></script>
       <![endif]-->
@@ -40,12 +45,72 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
       <div class="slides">
         <section>
           <h1>
-            Curry, Composition, And You
+            Look Around You
           </h1>
         </section>
         <!-- whatiscurrying -->
         <section data-background="curry.JPG">
+          <span class="bg-hl">
+            Look around you.
+          </span>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
         </section>
+        <section data-background="motivation-2.png" data-background-size="60%">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <span class="bg-hl">
+            Look <em>around</em> you.
+          </span>
+        </section>
+        <section data-background="conquer.jpg">
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <div class="bg-hl">
+            <p>
+            Just...
+            </p>
+            <p class="fragment">look around you!</p>
+          </div>
+        </section>
+
+        <section data-background="seafood_curry1.jpg">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <p class="bg-hl">Have you worked out what we're looking for?</p>
+        </section>
+        <section data-background="motivation.jpg"> </section>
+        <section data-background="prawn-curry-1.jpg"></section>
         <section>
           <h2>
             What is currying?
@@ -141,7 +206,408 @@ add.call(5).call(6)</code></pre>
           <h2 class="fragment">Function composition!</h2>
         </section>
 
-        <section data-background="beethoven2.jpg"></section>
+        <section data-background="beethoven2.jpg" data-background-size="80%"></section>
+
+        <section>
+          <h1>Scary Math Time</h1>
+        </section>
+
+        <section>
+          <ol>
+            <li class="fragment">
+              $ foo(x) = 2x + 1 $
+            </li>
+            <li class="fragment">
+              $ bar(x) = x^2 $
+            </li>
+            <li class="fragment">
+              $ (foo \circ bar)(x) = foo(bar(x)) $
+            </li>
+            <li class="fragment">
+              $ \circ(f, g, x) = f(g(x)) $
+            </li>
+            </ul>
+        </section>
+        <section>
+          <h2>And, in Ruby...</h2>
+          <pre><code class="ruby">foo = lambda do |x| 
+  2 * x + 1
+end
+
+bar = lambda do |x|
+  x ** 2
+end
+
+(foo * bar).call(x) == foo.call(bar.call(x))</code></pre>
+        </section>
+        <section>
+          <p>Ruby doesn't have a function composition operator...</p>
+          <p class="fragment">... yet!!</p>
+          <pre class="fragment"><code class="ruby">class Proc
+  def *(other)
+    lambda do |x|
+      self.call(other.call(x))
+    end
+  end
+end</code></pre>
+        </section>
+
+        <section>
+          <h1>You may be more used to...</h1>
+        </section>
+
+        <section>
+          <p>Bash pipes!</p>
+          <pre><code class="bash"># How many classes are defined in your app?
+$ cat **/*.rb | grep "^class" | wc -l</pre></code>
+
+          <pre class="fragment"><code class="bash"># Using the * style:
+$ (wc -l * grep "^class" * cat)( **/*.rb )
+$  wc -l ( grep "^class" ( cat ( **/*.rb ) ) )</code></pre>
+        </section>
+
+        <section>
+          <h2>Wait a minute...</h2>
+          <p class="fragment">Those Unix commands are partially applied!</p>
+        </section>
+        <section>
+          <h1>Fully Applied</h1>
+          <pre><code class="bash">$ wc -l **/*.rb
+$ grep "^class" **/*.rb
+$ cat **/*.rb</code></pre>
+        </section>
+        <section data-background="lamb-curry.jpg">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h2 style="text-align: right"><span class="bg-hl">surprise curry</span></h2>
+        </section>
+        <section>
+          <p>Unfortunately, Ruby doesn't have the pipe composition operator...</p>
+          <p class="fragment">... yet!</p>
+          <pre class="fragment"><code class="ruby">class Proc
+  def |(other)
+    lambda do |x|
+      other.call(self.call(x))
+    end
+  end
+end</pre></code>
+        </section>
+
+        <section>
+          <h1>Ruby is Object Oriented,</h1>
+          <h1 class="fragment">not Lambda Oriented.</h1>
+        </section>
+
+        <section>
+          Can we use what we've learned today?
+        </section>
+
+        <section>
+          <h2>Super easy in JavaScript!</h2>
+          <h3>Tons of higher order functions and callbacks</h3>
+        </section>
+
+        <section>
+          <h2>Normal</h2>
+          <pre style="width: 100%; font-size: 0.85em;"><code class="javascript">function update(index, item) {
+  App.data[index] = item;
+}
+
+function renderItems() {
+  return App.data.map(function (item, index) { 
+    return new Item(item, update.bind(this, index));
+  });
+}</code></pre>
+        </section>
+        <section>
+          <h2>Currified</h2>
+          <pre style="width: 100%; font-size: 0.85em;"><code class="javascript">function update(index) {
+  return function (item) {
+    App.data[index] = item;
+  }
+}
+
+function renderItems() {
+  return App.data.map(function (item, index) {
+    return new Item(item, update(index));
+  });
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>Lambdafied</h2>
+          <pre style="width: 100%; font-size: 0.85em;"><code class="javascript">let update = index => item => App.data[index] = item;
+
+function renderItems() {
+  return App.data.map(
+    (item, index) => new Item(item, update(index))
+  );
+}</code></pre>
+        </section>
+
+        <section>
+          <h1>javascript :(</h1>
+        </section>
+
+        <section>
+          <h1>If you'll permit...</h1>
+          <h2 class="fragment">let's go to space!</h2>
+        </section>
+
+        <section data-background="space-portal.jpg">
+          <aside class="notes">
+            I really like space. Like, a lot.
+          </aside>
+        </section>
+        <section data-background="matt_awesome.jpg">
+          <aside class="notes">
+            This is literally my LinkedIn profile picture
+          </aside>
+        </section>
+        <section data-background="architecture-astronaut.jpg">
+          <aside class="notes">
+            I may be guilty of Joel Spolsky's "architecture astronaut" thing
+          </aside>
+        </section>
+        <section data-background="space-curry.jpg">
+          <aside class="notes">
+            But it's fine, there's curry in space too!
+          </aside>
+        </section>
+
+        <section data-background="going-to-space.png">
+          <aside class="notes">
+            I want everyone to go to space today, so if anyone is getting lost, please feel free to ask any questions!
+          </aside>
+        </section>
+
+        <section>
+          <h1>
+            What is a function?
+          </h1>
+        </section>
+
+
+        <section>
+          <h3>
+            The add function
+          </h3>
+          <table style="width: 100%">
+            <thead>
+              <tr>
+                <th>Language</th>
+                <th>Implemented</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>Ruby</td>
+              <td><pre><code class="ruby">add = -> x, y { x + y }</code></pre></td>
+            </tr>
+            <tr>
+              <td>
+                Java
+              </td>
+              <td>
+                <pre style="font-size: 0.8em"><code class="java">public static int add(int x, int y) {
+  return x + y; 
+}</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Haskell
+              </td>
+              <td>
+                <pre><code class="haskell">add :: Int -> Int -> Int
+add x y = x + y</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Math</td>
+              <td>$add : \mathbb{Z} \rightarrow \mathbb{Z} \rightarrow \mathbb{Z}$<br>$ add(x, y) = x + y $</td>
+            </tr>
+          </table>
+        </section>
+
+
+        <section>
+          <h1>A function is:</h1>
+          <p>
+          a transformation from something to some other thing
+          </p>
+          <p class="fragment">
+          represented like:
+          $$ A \rightarrow B $$
+          </p>
+          <p class="fragment">
+          where $A$ is the type of the original thing, and $B$ is the type of the new thing, and the arrow ($\rightarrow$) represents the transformation
+          </p>
+        </section>
+        <section>
+          <p>
+          Ruby is Object Oriented, not Lambda or Function Oriented.
+          </p>
+          <p>
+          Is there an equivalence? How can we translate these ideas?
+          </p>
+        </section>
+
+        <section data-background="marx.jpg"></section>
+
+        <section>
+          <h1>Ruby Class as a Function</h1>
+          <p class="fragment">RCaaF -- startup idea!</p>
+        </section>
+
+        <section>
+          <p>(this is kinda out there so please stop me and ask questions if you want)</p>
+        </section>
+
+        <section>
+          <p>How to make a Ruby class like a function?</p>
+          $$ f : A \rightarrow B $$
+          <p class="fragment">
+          Where:
+          </p>
+          <ul>
+            <li class="fragment">
+              $f$ is <code class="ruby">Class#new</code>
+            </li>
+            <li class="fragment">
+              $A$ is the duck-type of the input argument
+            </li>
+            <li class="fragment">
+              $B$ is the duck-type of the resulting object
+            </li>
+          </ul>
+        </section>
+
+        <section data-background="duck.jpg"></section>
+        <section>
+          <h1>Formal Definition of a Duck</h1>
+          <p>A Duck is the methods we care about on some object.</p>
+        </section>
+
+        <section>
+          <h3>Ok...</h3>
+          <pre><code class="ruby">class F
+  attr_reader :b
+
+  def initialize(object)
+    @b = object.a
+  end
+end</pre></code>
+          <p>Objects from <code class="ruby">F</code> have the duck <code>b</code>, and it's input argument has the duck <code>a</code></p>
+        </section>
+
+        <section>
+          <h3>So...</h3>
+          <pre><code class="ruby">class G
+  attr_reader :a
+
+  def initialize(object)
+    @a = object
+  end
+end</pre></code>
+          <p>Objects from <code class="ruby">G</code> have the duck <code>a</code>, and it's input argument doesn't have a duck</p>
+        </section>
+
+        <section>
+          <h2>Will It <s>Blend</s> Compose?</h2>
+          <pre class="fragment"><code class="ruby">>> F.new( G.new( 5 ) ).b
+=> 5</code></pre>
+        </section>
+
+        <section>
+          <h1>Yeah!</h1>
+          <p>I wrote the gem <a href="http://www.github.com/parsonsmatt/beethoven"><code class="ruby">Beethoven</code></a> to make this sort of thing easier</p>
+          <p>The following are equivalent:</p>
+
+          <pre><code class="ruby">F.new(G.new(5)).b</code></pre>
+          <pre><code class="ruby">(F * G).new(5).b</code></pre>
+          <pre><code class="ruby">(G | F).new(5).b</code></pre>
+          <pre><code class="ruby">[G, F].reduce(&:|).new(5)</code></pre>
+        </section>
+
+        <section>
+          <h1>To Curry a Class</h1>
+          <p>Single argument functions are boring...</p>
+        </section>
+
+        <section>
+          <h3>Currying a function:</h3>
+          Go from:
+          <pre><code class="ruby">lambda do |x, y|
+  x + y
+end.call(5, 6)</code></pre>
+          to
+          <pre> <code class="ruby">lambda do |x|
+  lambda { |y| x + y }
+end.call(5).call(6) </code> </pre>
+        </section>
+
+        <section>
+          <h2>What is the Duck of an instance of Class?</h2>
+          <h3 class="fragment"><pre align="center"><code style="text-align: center;" class="ruby">Class#new</code></pre></h3>
+        </section>
+
+        <section>
+          <h2>
+            Return an object that responds to <s>call</s> new...
+          </h2>
+        </section>
+
+        <section>
+          <h1>Add</h1>
+<pre style="font-size: 0.85em"><code class="ruby">class Add
+  def initialize(x)
+    @x = x
+  end
+
+  def new(y)
+    @y = y
+  end
+
+  def value
+    @x + @y
+  end
+end</code></pre>
+        </section>
+
+        <section>
+<pre><code class="ruby">>> Add.new(5).new(6).value
+=> 11 </code> </pre>
+        </section>
+
+        <section>
+          <h1>
+            (•_•)
+          </h1>
+          <h1 class="fragment">
+            ( •_•)>⌐■-■
+          </h1>
+          <h1 class="fragment">
+            (⌐■_■)
+          </h1>
+        </section>
+
+        <section data-background="yeahhh.png"></section>
+
+
+
         <!-- about me -->
         <section>
           <h2>I'm Matt Parsons<span class="fragment">?</span></h2>
