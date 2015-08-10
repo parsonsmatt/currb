@@ -43,12 +43,13 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
     <div class="reveal">
       <div class="slides">
+
         <section>
           <h1>
             Look Around You
           </h1>
         </section>
-        <!-- whatiscurrying -->
+
         <section data-background="curry.JPG">
           <span class="bg-hl">
             Look around you.
@@ -61,6 +62,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           <br>
           <br>
         </section>
+
         <section data-background="motivation-2.png" data-background-size="60%">
           <br>
           <br>
@@ -77,6 +79,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             Look <em>around</em> you.
           </span>
         </section>
+
         <section data-background="conquer.jpg">
           <br/>
           <br/>
@@ -109,8 +112,11 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           <br>
           <p class="bg-hl">Have you worked out what we're looking for?</p>
         </section>
+
         <section data-background="motivation.jpg"> </section>
+
         <section data-background="prawn-curry-1.jpg"></section>
+
         <section>
           <h2>
             What is currying?
@@ -127,10 +133,12 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             </li>
           </ul>
         </section>
+
         <section>
           <h1>Actually...</h1>
           <p class="fragment">invented by Moses Schönfinkel</p>
         </section>
+
         <section>
           <h1>
             Boyer's Law
@@ -142,11 +150,11 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           (discovered by Hubert Kennedy)
           </li>
         </section>
-        <section data-background="green-curry.jpg">
-        </section>
-        <!-- example -->
-        <section data-background="how-i-did-it.png">
-        </section>
+
+        <section data-background="green-curry.jpg"> </section>
+
+        <section data-background="how-i-did-it.png"></section>
+
         <section>
           <p>First, you need a function</p>
           <pre><code class="ruby">add = lambda do |x, y|
@@ -186,10 +194,12 @@ end
 
 add.call(5).call(6)</code></pre>
         </section>
+
         <section>
           <h1>Congrats!!</h1>
           <p>Y'all are curry masters!</p>
         </section>
+
         <section data-background="y-tho.jpg">
           <aside class="notes">
             explanations usually end here
@@ -226,8 +236,9 @@ add.call(5).call(6)</code></pre>
             <li class="fragment">
               $ \circ(f, g, x) = f(g(x)) $
             </li>
-            </ul>
+          </ol>
         </section>
+
         <section>
           <h2>And, in Ruby...</h2>
           <pre><code class="ruby">foo = lambda do |x| 
@@ -240,6 +251,7 @@ end
 
 (foo * bar).call(x) == foo.call(bar.call(x))</code></pre>
         </section>
+
         <section>
           <p>Ruby doesn't have a function composition operator...</p>
           <p class="fragment">... yet!!</p>
@@ -270,12 +282,14 @@ $  wc -l ( grep "^class" ( cat ( **/*.rb ) ) )</code></pre>
           <h2>Wait a minute...</h2>
           <p class="fragment">Those Unix commands are partially applied!</p>
         </section>
+
         <section>
           <h1>Fully Applied</h1>
           <pre><code class="bash">$ wc -l **/*.rb
 $ grep "^class" **/*.rb
 $ cat **/*.rb</code></pre>
         </section>
+
         <section data-background="lamb-curry.jpg">
           <br>
           <br>
@@ -294,6 +308,7 @@ $ cat **/*.rb</code></pre>
           <br>
           <h2 style="text-align: right"><span class="bg-hl">surprise curry</span></h2>
         </section>
+
         <section>
           <p>Unfortunately, Ruby doesn't have the pipe composition operator...</p>
           <p class="fragment">... yet!</p>
@@ -310,6 +325,7 @@ end</pre></code>
           <h1>Ruby is Object Oriented,</h1>
           <h1 class="fragment">not Lambda Oriented.</h1>
         </section>
+
 
         <section>
           Can we use what we've learned today?
@@ -332,6 +348,7 @@ function renderItems() {
   });
 }</code></pre>
         </section>
+
         <section>
           <h2>Currified</h2>
           <pre style="width: 100%; font-size: 0.85em;"><code class="javascript">function update(index) {
@@ -362,6 +379,8 @@ function renderItems() {
           <h1>javascript :(</h1>
         </section>
 
+        <section data-background="grumpy-cat.jpg"></section>
+
         <section>
           <h1>If you'll permit...</h1>
           <h2 class="fragment">let's go to space!</h2>
@@ -372,16 +391,19 @@ function renderItems() {
             I really like space. Like, a lot.
           </aside>
         </section>
+
         <section data-background="matt_awesome.jpg">
           <aside class="notes">
             This is literally my LinkedIn profile picture
           </aside>
         </section>
+        
         <section data-background="architecture-astronaut.jpg">
           <aside class="notes">
             I may be guilty of Joel Spolsky's "architecture astronaut" thing
           </aside>
         </section>
+        
         <section data-background="space-curry.jpg">
           <aside class="notes">
             But it's fine, there's curry in space too!
@@ -391,6 +413,30 @@ function renderItems() {
         <section data-background="going-to-space.png">
           <aside class="notes">
             I want everyone to go to space today, so if anyone is getting lost, please feel free to ask any questions!
+          </aside>
+        </section>
+
+        <section data-background="wizard-cat-2.jpg">
+          <aside class="notes">
+            So if you're feeling less like this,
+          </aside>
+        </section>
+
+        <section data-background="wat-cat.jpg">
+          <aside class="notes">
+            And more like this
+          </aside>
+        </section>
+
+        <section data-background="wizard-cat-1.jpg">
+          <aside class="notes">
+            Please ask something, so we can maybe feel like this
+          </aside>
+        </section>
+
+        <section data-background="wizard-cat-3.jpg">
+          <aside class="notes">
+            Instead of like this.
           </aside>
         </section>
 
@@ -525,8 +571,13 @@ end</pre></code>
           <p>Objects from <code class="ruby">G</code> have the duck <code>a</code>, and it's input argument doesn't have a duck</p>
         </section>
 
-        <section>
-          <h2>Will It <s>Blend</s> Compose?</h2>
+        <section data-background="cat-hetero.jpg">
+          <h2 class="bg-hl">Will It <s>Blend</s> Compose?</h2>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
           <pre class="fragment"><code class="ruby">>> F.new( G.new( 5 ) ).b
 => 5</code></pre>
         </section>
@@ -572,13 +623,13 @@ end.call(5).call(6) </code> </pre>
 
         <section>
           <h1>Add</h1>
-<pre style="font-size: 0.85em"><code class="ruby">class Add
+          <pre style="font-size: 0.85em"><code class="ruby">class Add
   def initialize(x)
     @x = x
   end
 
   def new(y)
-    @y = y
+    @y = y; return self
   end
 
   def value
@@ -588,8 +639,124 @@ end</code></pre>
         </section>
 
         <section>
-<pre><code class="ruby">>> Add.new(5).new(6).value
+          <pre><code class="ruby">>> Add.new(5).new(6).value
 => 11 </code> </pre>
+        </section>
+
+        <section data-background="three-kittens.jpg"></section>
+
+        <section>
+          <h2>Higher order functions?</h2>
+
+          <pre style="font-size: 0.85em"><code class="ruby">class Map
+  def initialize(func)
+    @func = func
+  end
+
+  def new(object)
+    @list = object.list; self
+  end
+
+  def list
+    @list.map(&@func)
+  end
+end</code></pre>
+        </section>
+        <section>
+          <h2>Higher order functions?</h2>
+
+          <pre style="font-size: 0.85em"><code class="ruby">class Filter
+  def initialize(func)
+    @func = func
+  end
+
+  def new(object)
+    @list = object.list; self
+  end
+
+  def list
+    @list.filter(&@func)
+  end
+end</code></pre>
+        </section>
+
+        <section>
+          <h2>Higher order functions?</h2>
+
+          <pre style="font-size: 0.85em"><code class="ruby">class Reduce
+  def initialize(func)
+    @func = func
+  end
+
+  def new(object)
+    @list = object.list; self
+  end
+
+  def value 
+    @list.reduce(&@func)
+  end
+end</code></pre>
+        </section>
+
+        <section>
+          <h1>
+            Verbosely...
+          </h1>
+          <pre style="font-size: 0.85em"><code class="ruby">List = Struct.new(:list)
+list = List.new( (1..100).to_a )
+
+Reduce.new(-> sum, next { sum + next }).new(
+  Map.new(-> x { x + 10 }).new(
+    Filter.new(-> x { x.even? }).new(list)
+  )
+).value
+=> 3050
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>
+            Better!
+          </h1>
+          <pre style="font-size: 0.85em"><code class="ruby">Pipeline = Filter.new(-> x { x.even? })
+         | Map.new(-> x { x + 10 }) 
+         | Reduce.new(-> sum, next { sum + next })
+
+Pipeline.new(list).value
+=> 3050
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>
+            ooooooh
+          </h1>
+          <pre style="font-size: 0.85em"><code class="ruby">even    = -> x { x.even? }
+add_ten = -> x { x + 10 }
+add     = -> x, y { x + y }
+
+Pipeline = Filter.new(even)
+         | Map.new(add_ten) 
+         | Reduce.new(add)
+
+Pipeline.new(list).value
+=> 3050
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>
+            you can curry that
+          </h1>
+          <pre style="font-size: 0.85em"><code class="ruby">even = -> x { x.even? }
+add  = -> x, y { x + y }.curry
+
+Pipeline = Filter.new(even)
+         | Map.new(add.call(10)) 
+         | Reduce.new(add)
+
+Pipeline.new(list).value
+=> 3050</code></pre>
         </section>
 
         <section>
@@ -611,9 +778,17 @@ end</code></pre>
         <!-- about me -->
         <section>
           <h2>I'm Matt Parsons<span class="fragment">?</span></h2>
+            <p class="fragment">
+            Ruby and JavaScript @<br> <img src="VC_logo_full.png" style="border: none; background: RGBa(0,0,0,0); width: 50%; height: 50%" alt="Vitamin C"><br><span class="fragment">(<s>we're</s> they're hiring!)</span>
+            </p>
+            <p class="fragment">
+              Now, Haskell @ Layer 3 Communications
+            </p>
+          
         </section>
+
+
         <section data-background="cat-weights.jpg">
-          <p></p>
           <br>
           <br>
           <br>
@@ -622,18 +797,20 @@ end</code></pre>
           <br>
           <br>
           <br>
-          <p></p>
-          <h1>
+          <br>
+          <br>
+          <h1 class="bg-hl">
             Thanks! :D
           </h1>
-          <h3>questions?</h3>
+          <h3 class="bg-hl">questions?</h3>
+          <p><a href="http://www.twitter.com/mattoflambda">@mattoflambda (Twitter)</a></p>
+          <p><a href="http://www.github.com/parsonsmatt">@parsonsmatt (Github)</a></p>
 
         </section>
 
         <!-- asdfasdf -->
       </div>
     </div>
-
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
 
